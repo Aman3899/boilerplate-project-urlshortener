@@ -12,7 +12,7 @@
             "dest": "/index.js"
         },
         {
-            "src": "/style.css",
+            "src": "/public/(.*)",
             "dest": "/public/style.css"
         },
         {
