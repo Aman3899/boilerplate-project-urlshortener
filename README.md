@@ -1,3 +1,9 @@
 # URL Shortener Microservice
 
-This is the boilerplate code for the URL Shortener Microservice project. Instructions for building your project can be found at https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/url-shortener-microservice.
+A Node.js/Express microservice to shorten URLs and redirect them.
+
+## Setup
+1. Clone the repository:
+   ```bash
+   git clone <your-repo-url>
+   cd url-shortener-microservice

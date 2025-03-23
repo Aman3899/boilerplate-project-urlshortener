@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener Microservice</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>URL Shortener Microservice</h1>
+        <p>Enter a URL below to shorten it.</p>
+        
+        <form id="urlForm" action="/api/shorturl" method="POST">
+            <input type="text" name="url" placeholder="https://example.com" required />
+            <button type="submit">Shorten</button>
+        </form>
+        
+        <div id="result">
+            <pre id="output"></pre>
+        </div>
+
+        <h2>Example Usage:</h2>
+        <p>POST to <code>/api/shorturl</code> with <code>url=https://freecodecamp.org</code></p>
+        <p>GET <code>/api/shorturl/1</code> to redirect</p>
+
+        <h2>Example Output:</h2>
+        <pre>{"original_url": "https://freecodecamp.org", "short_url": 1}</pre>
+    </div>
+
+    <script>
+        document.getElementById("urlForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            
+            try {
+                const response = await fetch("/api/shorturl", {
+                    method: "POST",
+                    body: formData
+                });
+                const data = await response.json();
+                document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById("output").textContent = "Error shortening URL";
+            }
+        });
+    </script>
+</body>
+</html>
